@@ -117,15 +117,19 @@ class PostController extends Controller
             $counter = 1;
             $slug_base = Str::slug($data['title']);
             $post_present = Post::where('slug', $slug)->first();
+            $data['slug'] = $slug;
 
             while ($post_present) {
                 $slug = $slug_base . '-' . $counter;
                 $counter++;
                 $post_present = Post::where('slug', $slug)->first();
+                
+
             }
         };
       
-        $data['slug'] = $slug;
+        
+        
         $post->update($data);
         return redirect()->route('admin.posts.index');
     }
