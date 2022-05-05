@@ -33,8 +33,12 @@
                 </form>
             </td>
             <td>
-                <form action="#">
+                <form action="{{route( 'admin.posts.destroy',$post)}}" method="POST">
+                    @csrf
+                    @method('DELETE')
                     <input type="submit" class="btn btn-outline-danger btn-md disabled"value="Elimina">
+                    
+
                 </form>
             </td>
 
