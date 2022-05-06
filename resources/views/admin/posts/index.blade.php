@@ -27,6 +27,9 @@
             <td>{{$post->slug}}</td>
             <td>{{$post->published_at}}</td>
             <td>{{$post->created_at}}</td>
+            {{-- <td>{{App\Post::getDate($post->created_at)}}</td>
+            <td>{{App\Post::getDate($post->published_at)}}</td> --}}
+
 
             {{-- data con Carbon --}}
 
