@@ -27,6 +27,10 @@
             <td>{{$post->slug}}</td>
             <td>{{$post->published_at}}</td>
             <td>{{$post->created_at}}</td>
+
+            {{-- data con Carbon --}}
+
+            {{-- <td>{{ Carbon\Carbon::createFromFormat('Y-m-d H:i:s', $post->created_at) }}</td> --}}
             <td>
                 <form action="{{route( 'admin.posts.edit', $post ) }}">
                     <input type="submit" class="btn btn-outline-success btn-md disabled"value="Modifica">
