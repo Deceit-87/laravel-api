@@ -16,6 +16,22 @@
                 @enderror
             </div>
 
+            {{-- SELECT --}}
+
+            <div class="form-group">
+                <label for="category_id">Categoria</label>
+                <select class="form-control @error('category_id') is-invalid @enderror" id="category_id" name="category_id">
+                    <option value="">-- nessuna --</option>
+                    @foreach ($categories as $category)
+                        <option {{ old('category_id') && old('category_id') == $category->id ? 'selected' : '' }}
+                            value="{{ $category->id }}">{{ $category->name }}</option>
+                    @endforeach
+                </select>
+                @error('category_id')
+                    <div class="invalid-feedback"> {{ $message }} </div>
+                @enderror
+            </div>
+
             <div class="form-group">
                 <label for="content">Articolo</label>
                 <textarea class="form-control @error('content') is-invalid @enderror" id="content" name="content"
@@ -27,8 +43,8 @@
 
             <div class="form-group">
                 <label for="published_at">Data Pubblicazione</label>
-                <input type="date" class="form-control @error('published_at') is-invalid @enderror" id="published_at" name="published_at"
-                    value="{{ old('published_at') }}" aria-describedby="emailHelp">
+                <input type="date" class="form-control @error('published_at') is-invalid @enderror" id="published_at"
+                    name="published_at" value="{{ old('published_at') }}" aria-describedby="emailHelp">
                 @error('published_at')
                     <div class="invalid-feedback"> {{ $message }} </div>
                 @enderror

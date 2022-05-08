@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Admin;
 
+use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
 use Illuminate\Http\Request;
@@ -16,7 +17,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::orderBy('created_at', 'desc')->limit(20)->get();
+        $posts = Post::with('category')->orderBy('created_at', 'desc')->limit(20)->get();
         return view('admin.posts.index', compact('posts'));
     }
 
@@ -26,8 +27,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('admin.posts.create');
+    {   $categories= Category::all();
+        return view('admin.posts.create',compact('categories'));
     }
 
     /**
@@ -42,7 +43,8 @@ class PostController extends Controller
 
             'title' => 'required|Max:150|string',
             'content' => 'required|string',
-            'published_at' => 'nullable|date|before_or_equal:today'
+            'published_at' => 'nullable|date|before_or_equal:today',
+            'category_id' =>'nullable|exists:categories,id'
 
 
         ]);
@@ -104,7 +106,9 @@ class PostController extends Controller
 
             'title' => 'required|Max:150|string',
             'content' => 'required|string',
-            'published_at' => 'nullable|date|before_or_equal:today'
+            'published_at' => 'nullable|date|before_or_equal:today',
+            // 'category_id' =>'nullable|exists:$categories,id'
+
 
 
         ]);

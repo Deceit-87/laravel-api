@@ -13,9 +13,10 @@
             <th scope="col">#</th>
             <th scope="col">Titolo</th>
             <th scope="col">Slug</th>
+            <th scope="col">Categoria</th>
             <th scope="col">Data Pubblicazione</th>
             <th scope="col">Data Creazione</th>
-            <th scope="col"></th>
+            <th scope="col"></th> 
           </tr>
         </thead>
         <tbody>
@@ -25,6 +26,7 @@
             <td>{{$post->id}}</td>
             <td>{{$post->title}}</td>
             <td>{{$post->slug}}</td>
+            <td>{{$post->category ? $post->category->name : '-'}}</td>
             <td>{{$post->published_at}}</td>
             <td>{{$post->created_at}}</td>
             {{-- <td>{{App\Post::getDate($post->created_at)}}</td>
