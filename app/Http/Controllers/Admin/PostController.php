@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Admin;
 use App\Category;
 use App\Http\Controllers\Controller;
 use App\Post;
+use App\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
 
@@ -17,6 +18,7 @@ class PostController extends Controller
      */
     public function index()
      {  //  WITH PERMETTE DI EFFETTURARE UNA SINGOLA CHIAMATA PREDENDO CATGORY E TAGS
+
         $posts = Post::with(['category','tags'])->orderBy('created_at', 'desc')->limit(20)->get();
         return view('admin.posts.index', compact('posts'));
     }
@@ -44,7 +46,8 @@ class PostController extends Controller
             'title' => 'required|Max:150|string',
             'content' => 'required|string',
             'published_at' => 'nullable|date|before_or_equal:today',
-            'category_id' =>'nullable|exists:categories,id'
+            'category_id' =>'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
 
 
         ]);
@@ -90,8 +93,9 @@ class PostController extends Controller
     public function edit(Post $post)
     {
         $categories = Category::all();
+        $tags = Tag::all();
 
-        return view('admin.posts.edit', compact('post','categories'));
+        return view('admin.posts.edit', compact('post','categories','tags'));
     }
 
     /**
@@ -108,13 +112,24 @@ class PostController extends Controller
             'title' => 'required|Max:150|string',
             'content' => 'required|string',
             'published_at' => 'nullable|date|before_or_equal:today',
-            'category_id' =>'nullable|exists:categories,id'
+            'category_id' =>'nullable|exists:categories,id',
+            'tags' => 'nullable|exists:tags,id'
+
 
 
 
         ]);
 
         $data = $request->all();
+
+
+        if(array_key_exists('tags',$data)){
+            $post->tags()->sync($data['tags']);
+        }
+        else{
+            //  $post->tags()->sync([]);
+             $post->tags()->detach();
+        }
 
         
         if ($post->title != $data['title']) {
@@ -133,7 +148,7 @@ class PostController extends Controller
             }
         };
       
-        
+    
         
         $post->update($data);
         return redirect()->route('admin.posts.index');
