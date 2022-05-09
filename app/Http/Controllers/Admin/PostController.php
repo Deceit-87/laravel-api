@@ -16,8 +16,8 @@ class PostController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        $posts = Post::with('category')->orderBy('created_at', 'desc')->limit(20)->get();
+     {  //  WITH PERMETTE DI EFFETTURARE UNA SINGOLA CHIAMATA PREDENDO CATGORY E TAGS
+        $posts = Post::with(['category','tags'])->orderBy('created_at', 'desc')->limit(20)->get();
         return view('admin.posts.index', compact('posts'));
     }
 
