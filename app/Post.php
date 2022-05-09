@@ -18,6 +18,10 @@ class Post extends Model
     public function category(){
         return $this->belongsTo('App\Category');
     }
+    public function tags(){
+
+        return $this->belongsToMany('App\Tag');
+    }
 
     public static function getDate($d, $format ='l j F'){
         if ($d){
