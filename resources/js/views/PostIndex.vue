@@ -1,10 +1,6 @@
 <template>
-  <div  class="container bg-zinc-800 min-h-screen">
-      <div :class="[posts == false ? 'h-screen':'','flex justify-center items-center']">
-
-
-          <div v-show="posts == false" class="spinner"></div>
-      </div>
+  <div  class="container bg-zinc-800 min-h-screen rounded-xl">
+     
 
     <div
       class="
@@ -17,6 +13,12 @@
 
       "
     >   
+
+     <div v-show="posts == false" v-for="n in 12" :key="n" class="flex justify-center items-center py-24">
+
+
+          <div class="spinner"></div>
+      </div>
       <PostCard  v-for="post in posts" :key="post.id" :post="post" />
     </div>
     <ul class="flex justify-center container gap-x-12 py-8">
@@ -47,6 +49,7 @@ export default {
       posts: [],
       currentPage: 1,
       lastPage: 0,
+      
     };
   },
   methods: {

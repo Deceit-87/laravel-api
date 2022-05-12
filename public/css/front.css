@@ -9,7 +9,7 @@
   height: 100px;
   border-radius: 50%;
   padding: 0px;
-  background: conic-gradient(rgba(0, 0, 0, 0) 10%, #ffffff) content-box;
+  background: conic-gradient(rgba(0, 0, 0, 0) 10%, rgba(100, 98, 98, 0.4235294118)) content-box;
   -webkit-mask: repeating-conic-gradient(rgba(0, 0, 0, 0) 0deg, #000 1deg 20deg, rgba(0, 0, 0, 0) 21deg 36deg), radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 9px), #000 calc(100% - 8px));
           mask: repeating-conic-gradient(rgba(0, 0, 0, 0) 0deg, #000 1deg 20deg, rgba(0, 0, 0, 0) 21deg 36deg), radial-gradient(farthest-side, rgba(0, 0, 0, 0) calc(100% - 9px), #000 calc(100% - 8px));
   -webkit-mask-composite: destination-in;

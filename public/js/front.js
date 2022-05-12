@@ -1922,6 +1922,15 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     post: {
@@ -1981,6 +1990,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostCard.vue */ "./resources/js/components/PostCard.vue");
+//
+//
 //
 //
 //
@@ -2544,24 +2555,31 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "container opacity-50 hover:opacity-100 rounded hover:bg-zinc-600 rounded-lg overflow-hidden text-white p-1",
-    },
-    [
-      _c("img", { attrs: { src: _vm.post.cover, alt: "" } }),
-      _vm._v(" "),
-      _c("h4", [_vm._v("\n        " + _vm._s(_vm.post.title) + "\n    ")]),
-      _vm._v(" "),
-      _vm.post.category
-        ? _c("p", [_vm._v(_vm._s(_vm.post.category.name))])
-        : _vm._e(),
-      _vm._v(" "),
-      _c("p", [_vm._v(_vm._s(_vm.post.content))]),
-    ]
-  )
+  return _c("div", { staticClass: "container" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "container opacity-50 hover:opacity-100 rounded hover:bg-zinc-600 rounded-lg overflow-hidden text-white p-1",
+      },
+      [
+        _c("img", {
+          staticClass: "rounded-md",
+          attrs: { src: _vm.post.cover, alt: "" },
+        }),
+        _vm._v(" "),
+        _c("h4", [
+          _vm._v("\n            " + _vm._s(_vm.post.title) + "\n        "),
+        ]),
+        _vm._v(" "),
+        _vm.post.category
+          ? _c("p", [_vm._v(_vm._s(_vm.post.category.name))])
+          : _vm._e(),
+        _vm._v(" "),
+        _c("p", [_vm._v(_vm._s(_vm.post.content))]),
+      ]
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2634,67 +2652,69 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container bg-zinc-800 min-h-screen" }, [
-    _c(
-      "div",
-      {
-        class: [
-          _vm.posts == false ? "h-screen" : "",
-          "flex justify-center items-center",
+  return _c(
+    "div",
+    { staticClass: "container bg-zinc-800 min-h-screen rounded-xl" },
+    [
+      _c(
+        "div",
+        {
+          staticClass:
+            "\n      container\n      grid grid-cols-2\n      md:grid-cols-3\n      lg:grid-cols-4\n      gap-12\n      p-12\n\n    ",
+        },
+        [
+          _vm._l(12, function (n) {
+            return _c(
+              "div",
+              {
+                directives: [
+                  {
+                    name: "show",
+                    rawName: "v-show",
+                    value: _vm.posts == false,
+                    expression: "posts == false",
+                  },
+                ],
+                key: n,
+                staticClass: "flex justify-center items-center py-24",
+              },
+              [_c("div", { staticClass: "spinner" })]
+            )
+          }),
+          _vm._v(" "),
+          _vm._l(_vm.posts, function (post) {
+            return _c("PostCard", { key: post.id, attrs: { post: post } })
+          }),
         ],
-      },
-      [
-        _c("div", {
-          directives: [
-            {
-              name: "show",
-              rawName: "v-show",
-              value: _vm.posts == false,
-              expression: "posts == false",
-            },
-          ],
-          staticClass: "spinner",
-        }),
-      ]
-    ),
-    _vm._v(" "),
-    _c(
-      "div",
-      {
-        staticClass:
-          "\n      container\n      grid grid-cols-2\n      md:grid-cols-3\n      lg:grid-cols-4\n      gap-12\n      p-12\n\n    ",
-      },
-      _vm._l(_vm.posts, function (post) {
-        return _c("PostCard", { key: post.id, attrs: { post: post } })
-      }),
-      1
-    ),
-    _vm._v(" "),
-    _c(
-      "ul",
-      { staticClass: "flex justify-center container gap-x-12 py-8" },
-      _vm._l(_vm.lastPage, function (n) {
-        return _c("li", { key: n }, [
-          _c(
-            "span",
-            {
-              class: [
-                _vm.currentPage === n ? "bg-orange-400" : "bg-white/30",
-                "h-10 w-10 dot rounded-full justify-center items-center flex cursor-pointer",
-              ],
-              on: {
-                click: function ($event) {
-                  return _vm.chiamataPost(n)
+        2
+      ),
+      _vm._v(" "),
+      _c(
+        "ul",
+        { staticClass: "flex justify-center container gap-x-12 py-8" },
+        _vm._l(_vm.lastPage, function (n) {
+          return _c("li", { key: n }, [
+            _c(
+              "span",
+              {
+                class: [
+                  _vm.currentPage === n ? "bg-orange-400" : "bg-white/30",
+                  "h-10 w-10 dot rounded-full justify-center items-center flex cursor-pointer",
+                ],
+                on: {
+                  click: function ($event) {
+                    return _vm.chiamataPost(n)
+                  },
                 },
               },
-            },
-            [_vm._v("\n        " + _vm._s(n))]
-          ),
-        ])
-      }),
-      0
-    ),
-  ])
+              [_vm._v("\n        " + _vm._s(n))]
+            ),
+          ])
+        }),
+        0
+      ),
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
