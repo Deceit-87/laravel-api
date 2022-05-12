@@ -1,5 +1,11 @@
 <template>
-  <div class="container bg-zinc-800">
+  <div  class="container bg-zinc-800 min-h-screen">
+      <div :class="[posts == false ? 'h-screen':'','flex justify-center items-center']">
+
+
+          <div v-show="posts == false" class="spinner"></div>
+      </div>
+
     <div
       class="
         container
@@ -8,9 +14,10 @@
         lg:grid-cols-4
         gap-12
         p-12
+
       "
-    >
-      <PostCard v-for="post in posts" :key="post.id" :post="post" />
+    >   
+      <PostCard  v-for="post in posts" :key="post.id" :post="post" />
     </div>
     <ul class="flex justify-center container gap-x-12 py-8">
       <li class="" v-for="n in lastPage" :key="n">

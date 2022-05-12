@@ -2011,6 +2011,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -2627,12 +2634,35 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", { staticClass: "container bg-zinc-800" }, [
+  return _c("div", { staticClass: "container bg-zinc-800 min-h-screen" }, [
+    _c(
+      "div",
+      {
+        class: [
+          _vm.posts == false ? "h-screen" : "",
+          "flex justify-center items-center",
+        ],
+      },
+      [
+        _c("div", {
+          directives: [
+            {
+              name: "show",
+              rawName: "v-show",
+              value: _vm.posts == false,
+              expression: "posts == false",
+            },
+          ],
+          staticClass: "spinner",
+        }),
+      ]
+    ),
+    _vm._v(" "),
     _c(
       "div",
       {
         staticClass:
-          "\n      container\n      grid grid-cols-2\n      md:grid-cols-3\n      lg:grid-cols-4\n      gap-12\n      p-12\n    ",
+          "\n      container\n      grid grid-cols-2\n      md:grid-cols-3\n      lg:grid-cols-4\n      gap-12\n      p-12\n\n    ",
       },
       _vm._l(_vm.posts, function (post) {
         return _c("PostCard", { key: post.id, attrs: { post: post } })
