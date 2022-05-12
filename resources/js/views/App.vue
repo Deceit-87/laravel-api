@@ -1,30 +1,33 @@
 <template>
-<div>
-   <header>
-       <ul>
-           <li>Home</li>
-           <li>Posts</li>
-           <li>Categories</li>
-       </ul>
-   </header>
-   <PostsGrid/>
-   <footer> Boolpress 2022
-       &copy;
-   </footer>
-</div>
-  
+  <div>
+      <header>
+          <ul>
+              <li>Home</li>
+              <li>Posts</li>
+              <li>Contact</li>
+          </ul>
+      </header>
+      <div>
+          <PostsIndex/>
+
+      </div>
+      <footer>
+          &copy; Boolpress 2022
+      </footer>
+  </div>
 </template>
 
 <script>
-import PostGrid from'./Posts.index.vue'
+import PostsIndex from './PostIndex'
 export default {
+
     components:{
-        PostGrid,
+        PostsIndex,
     }
 
 }
 </script>
 
-<style lang="scss" scoped>
+<style>
 
 </style>
