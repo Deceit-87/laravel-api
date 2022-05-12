@@ -2642,7 +2642,7 @@ var render = function () {
     _vm._v(" "),
     _c(
       "ul",
-      { staticClass: "flex justify-center container gap-x-12" },
+      { staticClass: "flex justify-center container gap-x-12 py-8" },
       _vm._l(_vm.lastPage, function (n) {
         return _c("li", { key: n }, [
           _c(

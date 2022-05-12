@@ -12,7 +12,7 @@
     >
       <PostCard v-for="post in posts" :key="post.id" :post="post" />
     </div>
-    <ul class="flex justify-center container gap-x-12">
+    <ul class="flex justify-center container gap-x-12 py-8">
       <li class="" v-for="n in lastPage" :key="n">
         <span
           :class="[
