@@ -1919,6 +1919,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     post: {
@@ -1978,6 +1980,8 @@ __webpack_require__.r(__webpack_exports__);
 "use strict";
 __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_PostCard_vue__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ../components/PostCard.vue */ "./resources/js/components/PostCard.vue");
+//
+//
 //
 //
 //
@@ -2498,13 +2502,24 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _c("img", { attrs: { src: _vm.post.cover, alt: "" } }),
-    _vm._v(" "),
-    _c("h4", [_vm._v("\n        " + _vm._s(_vm.post.title) + "\n    ")]),
-    _vm._v(" "),
-    _c("p", [_vm._v(_vm._s(_vm.post.content))]),
-  ])
+  return _c(
+    "div",
+    {
+      staticClass:
+        "container opacity-50 hover:opacity-100 rounded hover:bg-zinc-600 rounded-lg overflow-hidden text-white p-1",
+    },
+    [
+      _c("img", { attrs: { src: _vm.post.cover, alt: "" } }),
+      _vm._v(" "),
+      _c("h4", [_vm._v("\n        " + _vm._s(_vm.post.title) + "\n    ")]),
+      _vm._v(" "),
+      _vm.post.category
+        ? _c("p", [_vm._v(_vm._s(_vm.post.category.name))])
+        : _vm._e(),
+      _vm._v(" "),
+      _c("p", [_vm._v(_vm._s(_vm.post.content))]),
+    ]
+  )
 }
 var staticRenderFns = []
 render._withStripped = true
@@ -2528,21 +2543,25 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("div", [
-    _vm._m(0),
-    _vm._v(" "),
-    _c("div", [_c("PostsIndex")], 1),
-    _vm._v(" "),
-    _c("footer", [_vm._v("\n        © Boolpress 2022\n    ")]),
-  ])
+  return _c(
+    "div",
+    [
+      _vm._m(0),
+      _vm._v(" "),
+      _c("PostsIndex"),
+      _vm._v(" "),
+      _c("footer", [_vm._v("\n        © Boolpress 2022\n    ")]),
+    ],
+    1
+  )
 }
 var staticRenderFns = [
   function () {
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("header", [
-      _c("ul", [
+    return _c("header", { staticClass: "container py-12 text-white" }, [
+      _c("ul", { staticClass: "flex gap-x-1.5 justify-center text-2xl" }, [
         _c("li", [_vm._v("Home")]),
         _vm._v(" "),
         _c("li", [_vm._v("Posts")]),
@@ -2575,14 +2594,14 @@ var render = function () {
   var _c = _vm._self._c || _h
   return _c(
     "div",
-    [
-      _c("h1", [_vm._v("Articoli")]),
-      _vm._v(" "),
-      _vm._l(_vm.posts, function (post) {
-        return _c("PostCard", { key: post.id, attrs: { post: post } })
-      }),
-    ],
-    2
+    {
+      staticClass:
+        "container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 bg-zinc-800 p-12",
+    },
+    _vm._l(_vm.posts, function (post) {
+      return _c("PostCard", { key: post.id, attrs: { post: post } })
+    }),
+    1
   )
 }
 var staticRenderFns = []

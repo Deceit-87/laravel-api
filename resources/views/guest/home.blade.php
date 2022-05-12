@@ -10,16 +10,31 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
-
+    <script src="https://cdn.tailwindcss.com"></script>
+    
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
     <link href="{{ asset('css/front.css') }}" rel="stylesheet">
+    <script>
+      tailwind.config = {
+        theme: {
+          container:{
+                  center: true,
+              },
+          extend: {
+              colors: {
+                clifford: '#da373d',
+              }
+          }
+        }
+      }
+    </script>
 </head>
 
-<body>
+<body class="bg-zinc-500">
     <div id="root">
        
     </div>

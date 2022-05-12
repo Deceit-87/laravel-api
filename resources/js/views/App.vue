@@ -1,16 +1,16 @@
 <template>
   <div>
-      <header>
-          <ul>
+      <header class="container py-12 text-white">
+          <ul class="flex gap-x-1.5 justify-center text-2xl">
               <li>Home</li>
               <li>Posts</li>
               <li>Contact</li>
           </ul>
       </header>
-      <div>
-          <PostsIndex/>
+      
+          <PostsIndex/> 
 
-      </div>
+     
       <footer>
           &copy; Boolpress 2022
       </footer>

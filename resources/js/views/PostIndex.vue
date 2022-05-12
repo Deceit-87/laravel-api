@@ -1,8 +1,10 @@
 <template>
-  <div>
-    <h1>Articoli</h1>
-    <PostCard v-for="post in posts" :key="post.id" :post="post"/>
-  </div>
+   
+        
+          <div class="container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 bg-zinc-800 p-12">
+        <PostCard v-for="post in posts" :key="post.id" :post="post"/>
+          </div>
+ 
 </template>
 
 <script>
