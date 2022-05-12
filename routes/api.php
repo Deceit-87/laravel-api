@@ -21,4 +21,6 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 
     // TUTTE LE ROTTE API VERRANNO PREFIXATE CON PREFIX API
      
-Route::get('/posts','Api\PostController@index');
+Route::namespace('api')->group(function(){
+    Route::get('/posts','PostController@index');
+});

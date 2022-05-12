@@ -1921,6 +1921,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     post: {
@@ -1989,6 +1990,27 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   components: {
@@ -1996,17 +2018,30 @@ __webpack_require__.r(__webpack_exports__);
   },
   data: function data() {
     return {
-      posts: []
+      posts: [],
+      currentPage: 1,
+      lastPage: 0
     };
   },
   methods: {
     chiamataPost: function chiamataPost() {
       var _this = this;
 
-      axios.get('/api/posts').then(function (res) {
+      var page = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : 1;
+      axios.get("/api/posts", {
+        params: {
+          page: page
+        }
+      }).then(function (res) {
         console.log(res.data);
         var posts = res.data.posts;
-        _this.posts = posts;
+        var data = posts.data,
+            current_page = posts.current_page,
+            last_page = posts.last_page;
+        _this.posts = data;
+        _this.currentPage = current_page;
+        _this.lastPage = last_page;
+        console.log(_this.lastPage);
       })["catch"](function (err) {
         console.warn(err);
       });
@@ -2592,17 +2627,44 @@ var render = function () {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c(
-    "div",
-    {
-      staticClass:
-        "container grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 bg-zinc-800 p-12",
-    },
-    _vm._l(_vm.posts, function (post) {
-      return _c("PostCard", { key: post.id, attrs: { post: post } })
-    }),
-    1
-  )
+  return _c("div", { staticClass: "container bg-zinc-800" }, [
+    _c(
+      "div",
+      {
+        staticClass:
+          "\n      container\n      grid grid-cols-2\n      md:grid-cols-3\n      lg:grid-cols-4\n      gap-12\n      p-12\n    ",
+      },
+      _vm._l(_vm.posts, function (post) {
+        return _c("PostCard", { key: post.id, attrs: { post: post } })
+      }),
+      1
+    ),
+    _vm._v(" "),
+    _c(
+      "ul",
+      { staticClass: "flex justify-center container gap-x-12" },
+      _vm._l(_vm.lastPage, function (n) {
+        return _c("li", { key: n }, [
+          _c(
+            "span",
+            {
+              class: [
+                _vm.currentPage === n ? "bg-orange-400" : "bg-white/30",
+                "h-10 w-10 dot rounded-full justify-center items-center flex cursor-pointer",
+              ],
+              on: {
+                click: function ($event) {
+                  return _vm.chiamataPost(n)
+                },
+              },
+            },
+            [_vm._v("\n        " + _vm._s(n))]
+          ),
+        ])
+      }),
+      0
+    ),
+  ])
 }
 var staticRenderFns = []
 render._withStripped = true
