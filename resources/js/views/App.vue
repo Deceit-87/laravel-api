@@ -8,7 +8,7 @@
           </ul>
       </header>
       
-          <PostsIndex/> 
+            <router-view></router-view>
 
      
       <footer>
@@ -18,12 +18,7 @@
 </template>
 
 <script>
-import PostsIndex from './PostIndex'
 export default {
-
-    components:{
-        PostsIndex,
-    }
 
 }
 </script>

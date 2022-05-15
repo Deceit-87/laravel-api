@@ -14,7 +14,7 @@
       "
     >   
 
-     <div v-show="posts == false" v-for="n in 12" :key="n" class="flex justify-center items-center py-24">
+     <div v-show="posts == false" v-for="el in 12" :key="el" class="flex justify-center items-center py-24">
 
 
           <div class="spinner"></div>
@@ -67,7 +67,6 @@ export default {
           this.posts = data;
           this.currentPage = current_page;
           this.lastPage = last_page;
-          console.log(this.lastPage);
         })
         .catch((err) => {
           console.warn(err);
