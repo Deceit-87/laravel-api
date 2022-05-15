@@ -1931,6 +1931,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
     post: {
@@ -2650,7 +2652,7 @@ var render = function () {
             "\n      container\n      grid grid-cols-2\n      md:grid-cols-3\n      lg:grid-cols-4\n      gap-12\n      p-12\n\n    ",
         },
         [
-          _vm._l(12, function (el) {
+          _vm._l(_vm.posts.length, function (el) {
             return _c(
               "div",
               {
@@ -2662,7 +2664,7 @@ var render = function () {
                     expression: "posts == false",
                   },
                 ],
-                key: el,
+                key: el.i,
                 staticClass: "flex justify-center items-center py-24",
               },
               [_c("div", { staticClass: "spinner" })]
